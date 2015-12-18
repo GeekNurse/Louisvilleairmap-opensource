@@ -1,0 +1,6 @@
+[submodule "public/vendor/ckan.js"]
+	path = public/vendor/ckan.js
+	url = git://github.com/okfn/ckan.js.git
+[submodule "public/vendor/recline"]
+	path = public/vendor/recline
+	url = git://github.com/marks/recline.git

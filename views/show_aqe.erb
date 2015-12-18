@@ -1,0 +1,165 @@
+<script type="text/javascript">
+  var local_feed_path = '<%= @local_feed_path %>';
+  var feed_id = '<%= @site["id"]%>';
+  var feed_location = ['<%= @site["location_lat"] %>', '<%= @site["location_lon"] %>'];
+</script>
+
+<div class="row">
+  <div class="col-lg-12">
+    <h1 class="page-header"><%= @site["title"] %> <small>Air Quality Egg #<%= @site["id"] %></small></h1>
+  </div>
+</div>
+
+<% if @prevailing_aqi_component && @prevailing_aqi_component["computed_aqi"] > 0 %>
+<div class="row">
+  <div class="col-lg-12">
+    <div class="alert" style="background-color:<%= @prevailing_aqi_component["aqi_cat"][:color] %>; color:<%= @prevailing_aqi_component["aqi_cat"][:font] %>">
+      <p style="font-size:130%; line-height: 23px;"><strong>The air quality at this location is currently <%= @prevailing_aqi_component["aqi_cat"][:name].downcase %></strong> (<%= @prevailing_aqi_component["computed_aqi"] %> is the AQI value of <%= @prevailing_aqi_component["parameter"] %>)</p>
+    </div>
+  </div>
+</div>
+<% end %>
+
+<div class="row aqe">
+    <% @datastreams.each_with_index do |(ds,data),i| %>
+      <div class="col-lg-3 aqe datastream" style="height: 600px;">
+        <div class="panel panel-default" style="<%= (data["aqi_cat"] && data["aqi_cat"][:color]) ? "border-color: #{data["aqi_cat"][:color]}" : "" %>">
+          <div class="panel-heading">
+            <h4><%= ds %>
+              <% if data["more_info_url"] %>
+              <small><br />
+              <a class="current-external-link" href="<%= data["more_info_url"] %>" target="blank"><%= data["name"] %> <i class="fa fa-external-link"></i> 
+              </a></small>
+              <% end %>
+            </h4>
+          </div>
+          <div class="panel-body">
+            <div class="table-responsive">
+              <table class="table" style="margin-bottom:0px;">
+                <thead>
+                    <tr>
+                      <th style="width:50%">Sensor Value</th>
+                      <th style="width:50%">AQI</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                      <td>
+                        <%= "#{data["value"].to_f.round(2)} #{data["unit"]}" %>
+                      </td>
+                      <td>
+                        <% if data["computed_aqi"] %>
+                          <div class="alert" style="padding: 5px; background-color:<%= data["aqi_cat"][:color] %>; color:<%= data["aqi_cat"][:font] %>"><%= data["computed_aqi"] %> - <%= data["aqi_cat"][:name] %>
+                          </div>
+                        <% else %>
+                          <span class="text-muted">N/A</span>
+                        <% end %>
+                      </td>
+                    </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="table-responsive">
+              <table class="table" style="margin-bottom:0px;">
+                <thead>
+                  <tr>
+                    <th style="width:44%">Time period</th>
+                    <th style="width:28%">Avg Value</th>
+                    <th style="width:28%">Avg AQI</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Today</td>
+                    <td class="average-<%= ds %> average-0"><%= @averages[0][ds]["avg_value"].to_f.round(1) if @averages[0][ds] && @averages[0][ds]["avg_value"] %></td>
+                    <td><%= @averages[0][ds]["avg_aqi"].to_f.round(1) if @averages[0][ds] &&  @averages[0][ds]["avg_aqi"] %></td>
+                  </tr>
+                  <tr>
+                    <td>Past 3 days</td>
+                    <td class="average-<%= ds %> average-3"><%= @averages[3][ds]["avg_value"].to_f.round(1) if @averages[3][ds] &&  @averages[3][ds]["avg_value"] %></td>
+                    <td><%= @averages[3][ds]["avg_aqi"].to_f.round(1) if @averages[3][ds] &&  @averages[3][ds]["avg_aqi"] %></td>
+                  </tr>
+                  <tr>
+                    <td>Past 7 days</td>
+                    <td class="average-<%= ds %> average-7"><%= @averages[7][ds]["avg_value"].to_f.round(1) if @averages[7][ds] &&  @averages[7][ds]["avg_value"] %></td>
+                    <td><%= @averages[7][ds]["avg_aqi"].to_f.round(1) if @averages[7][ds] &&  @averages[7][ds]["avg_aqi"] %></td>
+                  </tr>
+                  <tr>
+                    <td>Past 28 days</td>
+                    <td class="average-<%= ds %> average-28"><%= @averages[28][ds]["avg_value"].to_f.round(1) if @averages[28][ds] &&  @averages[28][ds]["avg_value"] %></td>
+                    <td><%= @averages[28][ds]["avg_aqi"].to_f.round(1) if @averages[28][ds] &&  @averages[28][ds]["avg_aqi"] %></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+          </div>
+          <div class="panel-footer text-right">
+            <span class="text-muted"><%= @datastreams[ds] ? "Updated <span class='momentify'>#{@datastreams[ds]["datetime"]}Z</span>": ''%></span>
+          </div>
+        </div>
+      </div>
+    <% end %>
+</div>
+
+<div class="row">
+  <div class="col-lg-12">
+    <div id="dashboard-egg-chart"></div>
+  </div>
+</div>
+
+<div class="row"><div class="col-lg-12"><hr /></div></div>
+
+<div class="row">
+  <div class="col-lg-6">
+    <div class="map dashboard-map" id="map_canvas" style="width:100%;height:400px;"></div>
+    <br />
+    <%= erb :_map_filters %>
+  </div>
+
+  <div class="col-lg-6">
+    <div class="table-responsive">
+      <table class="table">
+          <thead>
+              <tr>
+                  <th>Egg title</th>
+                  <th><%= @site["title"] %></th>
+              </tr>
+          </thead>
+          <tbody>
+              <tr>
+                  <td>Description</td>
+                  <td><%= @site["description"] %></td>
+              </tr>
+              <tr>
+                  <td>Data source</td>
+                  <td><a href="http://xively.com/feeds/<%= @site["id"] %>" target='blank'>http://xively.com/feeds/<%= @site["id"] %></a></td>
+              </tr>
+              <tr>
+                  <td>Exposure</td>
+                  <td><%= @site["location_exposure"] %></td>
+              </tr>
+              <tr>
+                  <td>Elevation</td>
+                  <td><%= @site["location_ele"] %></td>
+              </tr>
+              <tr>
+                  <td>Latitude, Longitude</td>
+                  <td><%= @site["location_lat"] %>, <%= @site["location_lon"] %></td>
+              </tr>
+              <tr>
+                  <td>Status</td>
+                  <td><%= @site["status"] %></td>
+              </tr>
+              <tr>
+                  <td>Created</td>
+                  <td><span class='momentify'><%= @site["created"] %>Z</span></td>
+              </tr>
+              <tr>
+                  <td>Updated</td>
+                  <td><span class='momentify'><%= @site["updated"] %>Z</span></td>
+              </tr>
+          </tbody>
+      </table>
+  </div>
+</div>

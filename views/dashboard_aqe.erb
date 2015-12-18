@@ -1,0 +1,53 @@
+<div class="row">
+	<div class="col-lg-12">
+		<h1>Focus Air Quality Egg Dashboard</h1>
+		<hr />
+	</div>
+</div>
+<div class="row">
+	<div class="col-lg-4">
+		<div class="table-response">
+			<table class="table">
+				<tr><td><h4><%= @focus_ids.size %> sites expected</h4></td></tr>
+				<tr><td class="success"><h4><span class="num-sensors-live">0</span> live</h4></td></tr>
+				<tr><td class="warning"><h4><span class="num-sensors-frozen">0</span> frozen</h4></td></tr>
+				<td class="danger"><h4><span class="num-sensors-not_found">0</span> not found <small>(and not mapped)</small></h4></td></tr>
+			</table>
+		</div>
+	</div>
+	<div class="col-lg-8">
+		<div id="map_canvas" style="height:300px;"></div>
+	</div>
+</div>
+<div class="row">
+	<div class="col-lg-12">
+		<div class="pull-right">
+			<br />
+			<a class='btn btn-outline btn-primary' target='blank' href='/wizard?#&amp;datasets=aqe&amp;sql=<%= URI.encode(@sql) %>&amp;viewName=grid'>Shortcut to Data Viz Wizard for these Eggs</a>
+		</div>
+		<h2>Site Details</h2>
+		<p><em>Sparklines below represent data points for the past few days. Gaps in coverage will not be shown but are visible from AQE site detail pages.</em></p>
+		<div class="table-responsive">
+			<table class="dataTableify table table-striped table-bordered table-hover">
+				<thead>
+					<tr>
+						<th>Sensor ID/Name</th>
+						<th>Sensor Status</th>
+						<th>Sensor Created</th>
+						<th>Latest Data</th>
+					</tr>
+				</thead>
+				<tbody>
+					<% @focus_ids.each do |focus_id| %>
+					<tr data-sensor-id="<%= focus_id %>" data-sensor-type="aqe" data-detail-level="dashboard" >
+						<td><a href='/aqe/<%= focus_id %>'>AQE #<%= focus_id %></a><br /><strong class="sensor-title"></strong></td>
+						<td><span class="sensor-status"></span></td>
+						<td><span class="sensor-created_at"></span></td>
+						<td>Loading data for this sensor</td>
+					</tr>
+					<% end %>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>

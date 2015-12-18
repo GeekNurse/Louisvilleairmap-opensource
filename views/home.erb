@@ -1,0 +1,107 @@
+<div class="row hide-on-embed">
+  <div class="col-lg-12">
+    <h1 class="page-header">Welcome!</h1>
+    <p>
+      Using the map below, select a marker to learn more about it or select samples from the menu to the left.
+    </p>
+    <p>
+      You can use the drawing tools inside the map pane to select and compare multiple markers at once
+    </p>
+  </div><!-- end .col-lg-12 -->
+</div><!-- end .row .hide-on-embed -->
+<div class="row">
+  <div class="col-lg-8">
+  <%= if @site == "A"
+    erb :_air_forecast
+  end %>
+    <div class="home-map-container">
+      <svg version="1.1" baseProfile="full" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ev="http://www.w3.org/2001/xml-events" width=0 height=0>
+        <defs>
+          <pattern id="NE_purple" patternUnits="userSpaceOnUse" width="5" height="5">
+            <image xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAKklEQVQIW2NkQAI71Hf8B3EZQQyPmx6MMDkQHywIEkCWAKtAl0DRBtMBAFxKFTJsk76eAAAAAElFTkSuQmCC" x="0" y="0" width="5" height="5"/>
+          </pattern>
+          <pattern id="NW_red" patternUnits="userSpaceOnUse" width="10" height="10">
+            <image xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAJ0lEQVQIW2NkgIL/DAxAxMDACERADObBBcAS6AJwQZAWZGPgHGRjAF1ODAIFEm0/AAAAAElFTkSuQmCC" x="0" y="0" width="10" height="10"/>
+          </pattern>
+          <pattern id="N_blue" patternUnits="userSpaceOnUse" width="10" height="10">
+            <image xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAGUlEQVQIW2NkgAJjhv//QcyzDIyMjDQQBADyag8GOZi2ogAAAABJRU5ErkJggg==" x="0" y="0" width="10" height="10"/>
+          </pattern>
+          <pattern id="W_yellow" patternUnits="userSpaceOnUse" width="10" height="10">
+            <image xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAGUlEQVQIW2NkwAIY/99l+I8ujl0Qq3ZsggCYCgW87o7GkAAAAABJRU5ErkJggg==" x="0" y="0" width="10" height="10"/>
+          </pattern>
+          <pattern id="dot_blue" patternUnits="userSpaceOnUse" width="50" height="50">
+            <image xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAYAAADED76LAAAAJElEQVQYV2Nk6Pj/nwEEKhgZwTQan5GwArA23ABiLF4FA+8GAOQNGAll/ZPDAAAAAElFTkSuQmCC" x="0" y="0" width="50" height="50"/>
+          </pattern>
+          <pattern id="space" patternUnits="userSpaceOnUse" width="10" height="10">
+            <image xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAU0lEQVQYV2NkgAIf/ov/t3zUZ4TxQTSyGIYEskJkjXCFIN3IimBsmGKwQpgikCAuNopCbCaCxEAGgE2AmYTLMyA1xCvEFRzowYUSPLjcCBInWiEArudEYZQ9fzYAAAAASUVORK5CYII=" x="0" y="0" width="10" height="10"/>
+          </pattern>
+          <pattern id="diag_rect" patternUnits="userSpaceOnUse" width="5" height="5">
+            <image xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAKklEQVQIW2PUkjvz/9ojE0YGIACxQTSYgwxAEhiCYJXI2mE6wIIgDrK5AKkBEj+QkxFoAAAAAElFTkSuQmCC" x="0" y="0" width="5" height="5"/>
+          </pattern>
+          <pattern id="hs" patternUnits="userSpaceOnUse" width="5" height="5">
+            <image xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAIklEQVQIW2M8I1f0nwENMIL4IAmTR31wNpyBrBi7SmxmAgAqIxPNqjSeUQAAAABJRU5ErkJggg==" x="0" y="0" width="5" height="5"/>
+          </pattern>
+          <pattern id="blue_diagonals" patternUnits="userSpaceOnUse" width="5" height="5">
+            <image xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAI0lEQVQIW2OUbTjz/3GDCSMDFID4YA5MAkajqIDpwK4Sm5kAppQg1j+W9IgAAAAASUVORK5CYII=" x="0" y="0" width="5" height="5"/>
+          </pattern>
+          <pattern id="orange_grid" patternUnits="userSpaceOnUse" width="5" height="5">
+            <image xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQIW2NkAIIPyyz+C0SdYITRcAayBCNlKgE/uS2ga8NEIAAAAABJRU5ErkJggg==" x="0" y="0" width="5" height="5"/>
+          </pattern>
+        </defs>
+      </svg>
+      <style>
+        #loadingtext {
+          width: 150px;
+          padding: 10px;
+          background-color: white;
+          border-radius: 20px;
+          border: 1px solid;
+          margin: 150px auto;
+          font-weight: bold;
+          text-align: center;
+        }
+        #loadingcont {
+          width: 100%;
+          height: 100%;
+          position: fixed;
+          left: 0;
+          top: 0;
+          z-index: 10000;
+        }
+        #loadingbox {
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background-color: black;
+          opacity: .5;
+          z-index: 9999;
+        }
+      </style>
+      <div class="map home-map" id="map_canvas" style="width:100%;height:680px;">
+      </div><!-- map_convas -->
+      <hr />
+     <!--  <div class="alert alert-info">
+        Looking for mobile bike sensor data? We're working on a way to better visualize it.
+        <br />
+        See our work in progress <a href="http://recordit.co/ivXsuzmtaz" target="blank" title="screencast of data visualization of bike data"  class="alert-link">here</a> and <a href="http://recordit.co/f3ktmGd95W" target="blank" title="screencast of data visualization of bike data" class="alert-link">here</a>. Feedback is always welcome.
+      </div> --><!-- end .alert .alert-info -->
+    </div><!-- end #map_canvas -->
+  </div><!-- end .col-lg-8  -->
+  <div class="col-lg-4">
+    <div class="text-right">
+      <%= erb :_share_tools %>
+    </div><!-- end .text-right -->
+    <hr />
+    <%= if @site == "S"
+      erb :_map_filters_soil
+    end%>
+    <%= if @site == "A"
+      erb :_map_filters
+    end %>
+    <%= if @site == "W"
+      erb :_map_filters_water
+    end%>
+  </div><!-- end .col-lg-4 -->
+</div><!-- end .row -->

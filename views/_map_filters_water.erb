@@ -1,0 +1,179 @@
+<style>
+#measurements {
+	width: 100%;
+}
+
+#measurements tr {
+	border-top: 1px solid;
+}
+
+#measurements tr td { padding: 5px; }
+
+.navbar-default, #wrapper {
+	background-color: rgb(10,105,148);
+}
+
+a { color: white; }
+
+.navbar-brand { color: white !important; }
+
+.noshow { display:none; }
+</style>
+
+<div class="panel panel-default">
+  <div class="panel-heading">Map Feature Filters</div>
+  <div class="panel-body">
+    <form role="form">
+      <div class="form-group">
+        <!-- <label class="header">
+          <i class="fa fa-bars"></i> Durham Labs
+          <a target="blank" href="/wizard#datasets=bike" title="data visualization wizard for this dataset"><i class="fa fa-magic fa-fw"></i></a>
+        </label> -->
+        <!-- <div style="margin-left:8px;">
+          <label style="font-weight:normal;"> Bike
+          <select class='filter-bike-bike_id filter-bike form-control'>
+            <option value=""></option>
+            <% ["A4","A5","A8","A9","A10","A11","A12","A13","A17","A18","A19","A20","A21","A22"].each do |bike_id| %>
+              <option value="<%= bike_id %>">Bike <%= bike_id %></option>
+            <% end %>
+          </select>
+          </label>
+        </div> -->
+        <!-- <div style="margin-left:8px;">
+          <label style="font-weight:normal;"> Sensor
+          <select class='filter-bike-parameter filter-bike form-control'>
+            <option value=""></option>
+            <% ["CO","NO2","O3","VOC","TEMP","RHUM","PARTICULATE"].each do |parameter| %>
+              <option value="<%= parameter %>"><%= parameter %></option>
+            <% end %>
+          </select>
+          </label>
+        </div> -->
+      </div>
+      <div class="form-group">
+        <label class="header"><img src='/assets/img/heatmap_legend.png' style='width:20px;height:20px;margin-top:-5px;margin-right:5px;' alt='marker' />Propeller Health Asthma Heatmap</label>
+        <div style="margin-left:10px;">
+          <input class="filter-asthmaheat-user form-control2" placeholder="Username">
+          <input class="filter-asthmaheat-pass form-control2" type="password" placeholder="Password">
+        </div>
+      </div>
+      <hr />
+      <div class="form-group">
+          <div class="checkbox leaflet-layer-with-legend">
+            <label>
+              <input class='filter-he2014neighborhoodgeojson' type="checkbox" value="true">
+                <img style='width:19px; height:20px; margin-top: -4px;' src='/assets/img/louisvillekygov.png' alt='louisville ky'/> 
+                Neighborhood Health Equity 2014
+             </label>
+             <div style="display:none; margin-left:35px;" id='filter-he2014neighborhoodgeojson-fine'>
+		<em>Color neighborhoods by:</em><br>
+               <label> <input class='doesntcount filter-he2014neighborhoodgeojson-LifeExpect' type="checkbox" value="false"> Life Expectancy  </label><br>
+               <label> <input class='doesntcount filter-he2014neighborhoodgeojson-AlcoholDru' type="checkbox" value="false"> Alcohol or other drugs* </label><br>
+               <label> <input class='doesntcount filter-he2014neighborhoodgeojson-HeartDisea' type="checkbox" value="false"> Heart disease* </label><br>
+               <label> <input class='doesntcount filter-he2014neighborhoodgeojson-Homicide' type="checkbox" value="false"> Homicide* </label><br>
+               <label> <input class='doesntcount filter-he2014neighborhoodgeojson-Suicide' type="checkbox" value="false"> Suicide* </label><br>
+               <label> <input class='doesntcount filter-he2014neighborhoodgeojson-HIV' type="checkbox" value="false"> HIV* </label><br>
+               <label> <input class='doesntcount filter-he2014neighborhoodgeojson-Diabetes' type="checkbox" value="false"> Diabetes* </label><br>
+               <label> <input class='doesntcount filter-he2014neighborhoodgeojson-Unintended' type="checkbox" value="false"> Unintentional injury* </label><br>
+               <label> <input class='doesntcount filter-he2014neighborhoodgeojson-Cancer' type="checkbox" value="false"> Cancer* </label><br>
+               <label> <input class='doesntcount filter-he2014neighborhoodgeojson-Stroke' type="checkbox" value="false"> Stroke* </label><br>
+<!--
+              <label style="font-weight:normal;">
+               <select class='form-control filter-he2014neighborhoodgeojson-colorBy'>
+                 <option data-higherbetter="true" value="LifeExpect">Life Expectancy</option>
+                 <option data-higherbetter="false" value="AlcoholDru">Alcohol or other drugs*</option>
+                 <option data-higherbetter="false" value="HeartDisea">Heart disease*</option>
+                 <option data-higherbetter="false" value="Homicide">Homicide*</option>
+                 <option data-higherbetter="false" value="Suicide">Suicide*</option>
+                 <option data-higherbetter="false" value="HIV">HIV*</option>
+                 <option data-higherbetter="false" value="Diabetes">Diabetes*</option>
+                 <option data-higherbetter="false" value="Unintended">Unintentional injury*</option>
+                 <option data-higherbetter="false" value="Cancer">Cancer*</option>
+                 <option data-higherbetter="false" value="Stroke">Stroke*</option>
+               </select>
+              </label>
+-->
+              <p style="font-size:80%;">* Age Adjusted death rate per 100,000 population</p>
+            </div>
+          </div>
+
+          <div class="checkbox leaflet-layer-with-legend noshow">
+            <label>
+              <input class='filter-trafficcountsgeojson' type="checkbox" value="true">
+                <img style='width:19px; height:20px; margin-top: -4px;' src='/assets/img/kytc.png' alt='kentucky state transportation cabinet'/> 
+                Traffic Counts from KYTC
+             </label>
+             <div style="margin-left:35px;">
+              <label style="font-weight:normal;"><em>Style roads by:</em>
+              <select class='form-control filter-trafficcountsgeojson-colorBy'>
+                <option data-higherbetter="true" value="LASTCNT">Annual Average Daily Traffic (AADT)</option>
+                <option data-higherbetter="true" value="LASTCNTYR">Year of Last Data Collection</option>
+              </select>
+              </label>
+            </div>
+          </div>
+
+          <div class="checkbox noshow">
+              <label>
+                <input class='filter-jeffschools' type="checkbox" value="true">
+                  <img style='width:19px; height:20px; margin-top: -4px;' src='/assets/img/blackboard.png' alt='blackboard'/> 
+                  Jefferson County, KY Schools
+                  <a target="blank" href="/wizard#datasets=jeffschools" title="data visualization wizard for this dataset"><i class="fa fa-magic fa-fw"></i></a>
+                </label>
+          </div>
+
+          <div class="checkbox noshow">
+              <label>
+                <input class='filter-nursinghome' type="checkbox" value="true">
+                <img style='width:20px; height:20px; margin-top: -4px;' src='/assets/img/nursing_home_icon.png' alt='nursing home'/> 
+                KY Nursing Homes via HHS CMS
+                <a target="blank" href="/wizard#datasets=nursinghome" title="data visualization wizard for this dataset"><i class="fa fa-magic fa-fw"></i></a>
+              </label>
+          </div>
+
+          <div class="checkbox noshow">
+              <label>
+                <input class='filter-famallergy' type="checkbox" value="true">
+                <img style='width:19px; height:20px; margin-top: -4px;' src='/assets/img/famallergy.png' alt='family allergy and asthma center'/> 
+                Pollen Readings from Family Allergy &amp; Asthma
+                <a target="blank" href="/wizard#datasets=famallergy" title="data visualization wizard for this dataset"><i class="fa fa-magic fa-fw"></i></a>
+              </label>
+          </div>
+<!--           <div class="checkbox">
+              <label><input class='filter-food' type="checkbox" value="true">
+                <img style='width:20px; height:20px; margin-top: -4px;' src='/assets/img/fastfood_icon.png' alt='food'/> 
+                City Restaurant Inspection Scores
+                <a target="blank" href="/wizard#datasets=food" title="data visualization wizard for this dataset"><i class="fa fa-magic fa-fw"></i></a>
+              </label>
+          </div> -->
+
+          <div class="checkbox noshow">
+              <label><input class='filter-parks' type="checkbox" value="true">
+                <img style='width:20px; height:20px; margin-top: -4px;' src='/assets/img/urbanpark_icon.png' alt='park'/> 
+                City Park Locations and Amenities
+                <a target="blank" href="/wizard#datasets=parks" title="data visualization wizard for this dataset"><i class="fa fa-magic fa-fw"></i></a>
+              </label>
+          </div>
+
+          <div class="checkbox noshow">
+              <label><input class='filter-wupws' type="checkbox" value="true">
+                <img style='width:20px; height:20px; margin-top: -4px;' src='/assets/img/weather_station_icon.png' alt='weather station'/> 
+                Weather Stations
+                <a target="blank" href="/wizard#datasets=wupws" title="data visualization wizard for this dataset"><i class="fa fa-magic fa-fw"></i></a>
+              </label>
+          </div>
+
+          <div class="checkbox">
+              <label><input class='filter-usgsw_sites' type="checkbox" value="true" checked>
+                <img style='width:20px; height:20px; margin-top: -4px;' src='/assets/img/urbanpark_icon.png' alt='park'/> 
+                USGS Water Data Collection Stations
+                <a target="blank" href="/wizard#datasets=parks" title="data visualization wizard for this dataset"><i class="fa fa-magic fa-fw"></i></a>
+              </label>
+          </div>
+          
+      </div>
+
+      <button style="width:100%;" class="btn btn-default submit-map-filters">Apply Filters to Map</button>
+    </form>
+  </div>
+</div>

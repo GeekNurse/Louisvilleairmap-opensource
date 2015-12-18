@@ -1,0 +1,420 @@
+/* embed stuff */
+.embed-body{padding-top: 10px}
+.embed-content .hide-on-embed {display: none;}
+/* recline.js hacks for embed */
+.embed-content .data-view-sidebar{display: none !important;}
+.form-control2{
+  border-radius: 4px;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+  box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+  -webkit-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+  transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+  height: 34px;
+  padding: 4px 10px;
+  font-size: 14px;
+  line-height: 1.428571429;
+  color: #555;
+  background-color: #fff;
+  background-image: none;
+  border: 1px solid #ccc;
+  width:150px;
+}
+.sharethis span span {margin-bottom: -11px;}
+
+.jqstooltip {
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+}
+
+
+a:hover {cursor:pointer;}
+.popup_metadata table,.popup_metadata th,.popup_metadata td { border:1px solid #ccc; }
+
+.leaflet-control-layers-group-name {
+  font-weight: bold;
+  margin-bottom: .2em;
+  display: block;
+}
+
+.leaflet-control-layers-group {
+  margin-bottom: .5em;
+}
+
+.leaflet-control-layers-group td:nth-child(2) {
+  padding-left: .5em;
+}
+
+.leaflet-control-loading {
+    /* This is where your loading indicator would go */
+    background: url("/assets/img/loading.gif");
+}
+
+.leaflet-control-loading,
+.leaflet-control-zoom a.leaflet-control-loading ,
+.leaflet-control-zoomslider a.leaflet-control-loading {
+    display: none;
+}
+
+.leaflet-control-loading.is-loading,
+.leaflet-control-zoom a.leaflet-control-loading.is-loading,
+.leaflet-control-zoomslider a.leaflet-control-loading.is-loading  {
+    display: block;
+}
+
+/* Necessary for display consistency in Leaflet >= 0.6 */
+.leaflet-bar-part-bottom {
+    border-bottom: medium none;
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+}
+
+.leaflet-control-legend{
+  margin-right: 0px !important;
+}
+.leaflet-control-layers-group label{
+  font-weight:normal;
+}
+
+.leaflet-div-icon{
+  border-radius: 10px !important;
+  width: 10px !important;
+  height: 10px !important;
+}
+
+.leaflet-div-icon-text{
+  border-radius: 7px;
+  min-width: 7px;
+  min-height: 7px;
+  width: auto !important;
+  height: auto !important;
+}
+
+
+.leaflet-div-icon-propaqe{
+  border-radius: 7px;
+  width: 14px !important;
+  height: 19px !important;
+  text-align: center;
+}
+
+.leaflet-div-icon-aqi{
+  border-radius: 7px;
+  min-width: 7px;
+  min-height: 7px;
+  width: auto !important;
+  height: auto !important;
+  padding: 0px;
+  text-align: center;
+  color: black;
+}
+
+.leaflet-div-icon-bike{
+  border-radius: 7px;
+  width: auto !important;
+  height: auto !important;
+  text-align: center;
+  padding: 1px;
+}
+
+.aqi-bg-00E400{
+  background-color: #00E400 !important;
+  box-shadow: 0px 0px 10px 1px #00E400;
+  -webkit-box-shadow: 0px 0px 10px 1px #00E400;
+  -moz-box-shadow: 0px 0px 10px 1px #00E400;
+}
+.aqi-bg-FFFF00{
+  background-color: #FFFF00 !important;
+  box-shadow: 0px 0px 10px 1px #FFFF00;
+  -webkit-box-shadow: 0px 0px 10px 1px #FFFF00;
+  -moz-box-shadow: 0px 0px 10px 1px #FFFF00;
+}
+.aqi-bg-FF7E00{
+  background-color: #FF7E00 !important;
+  box-shadow: 0px 0px 10px 1px #FF7E00;
+  -webkit-box-shadow: 0px 0px 10px 1px #FF7E00;
+  -moz-box-shadow: 0px 0px 10px 1px #FF7E00;
+}
+.aqi-bg-FF0000{
+  background-color: #FF0000 !important;
+    box-shadow: 0px 0px 10px 1px #FF0000;
+  -webkit-box-shadow: 0px 0px 10px 1px #FF0000;
+  -moz-box-shadow: 0px 0px 10px 1px #FF0000;
+}
+
+.aqi-bg-99004C{
+  background-color: #99004C !important;
+    box-shadow: 0px 0px 10px 1px #99004C;
+  -webkit-box-shadow: 0px 0px 10px 1px #99004C;
+  -moz-box-shadow: 0px 0px 10px 1px #99004C;
+}
+
+.aqi-bg-4C0026{
+  background-color: #4C0026 !important;
+  box-shadow: 0px 0px 10px 1px #4C0026;
+  -webkit-box-shadow: 0px 0px 10px 1px #4C0026;
+  -moz-box-shadow: 0px 0px 10px 1px #4C0026;
+}
+
+.aqi-bg-000000{
+  background-color: #FFFF00 !important;
+  box-shadow: 0px 0px 10px 1px #CCC;
+  -webkit-box-shadow: 0px 0px 10px 1px #CCC;
+  -moz-box-shadow: 0px 0px 10px 1px #CCC;
+}
+
+.leaflet-icon-egg{
+  border-radius: 10px !important;
+  width: 11px !important;
+  height: 14px !important;
+  border: #CCC 1px;
+  opacity:0.75;
+}
+
+.leaflet-icon-egg-live{
+  background-color: #008000 !important;
+}
+
+.leaflet-icon-egg-frozen{
+  background-color: #FFFF00 !important;
+}
+
+.egg-icon {
+  z-index: 1000 !important;
+}
+
+.sensor-reading{
+  line-height: 23px;
+}
+
+.leaflet-popup-content .table td, .leaflet-popup-content .table th {padding: 5px 2px;}
+
+.col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, .col-xs-2, .col-sm-2, .col-md-2, .col-lg-2, .col-xs-3, .col-sm-3, .col-md-3, .col-lg-3, .col-xs-4, .col-sm-4, .col-md-4, .col-lg-4, .col-xs-5, .col-sm-5, .col-md-5, .col-lg-5, .col-xs-6, .col-sm-6, .col-md-6, .col-lg-6, .col-xs-7, .col-sm-7, .col-md-7, .col-lg-7, .col-xs-8, .col-sm-8, .col-md-8, .col-lg-8, .col-xs-9, .col-sm-9, .col-md-9, .col-lg-9, .col-xs-10, .col-sm-10, .col-md-10, .col-lg-10, .col-xs-11, .col-sm-11, .col-md-11, .col-lg-11, .col-xs-12, .col-sm-12, .col-md-12, .col-lg-12{padding-left: 7px;
+padding-right: 7px;}
+
+.form-group label.header {font-size: 120%; font-weight: 500; }
+.checkbox{margin-left:10px;}
+
+
+ul.dataset-metadata{padding-left:20px;}
+.dataset-metadata-container .panel-body{height: 400px; overflow:scroll;margin-bottom:20px;}
+.leaflet-top.leaflet-right{z-index:1002;}
+/* for bootstrap-wizard */
+.bwizard-steps {
+  display: inline-block;
+  margin: 0; padding: 0;
+  background: #fff }
+  .bwizard-steps .active {
+    color: #fff;
+    background: #007ACC }
+  .bwizard-steps .active:after {
+    border-left-color: #007ACC }
+  .bwizard-steps .active a {
+    color: #fff;
+    cursor: default }
+  .bwizard-steps .label {
+    position: relative;
+    top: -1px;
+    margin: 0 5px 0 0; padding: 1px 5px 2px }
+  .bwizard-steps .active .label {
+    background-color: #333;}
+  .bwizard-steps li {
+    display: inline-block; position: relative;
+    margin-right: 5px;
+    padding: 12px 17px 10px 30px;
+    *display: inline;
+    *padding-left: 17px;
+    background: #efefef;
+    line-height: 18px;
+    list-style: none;
+    zoom: 1; }
+  .bwizard-steps li:first-child {
+    padding-left: 12px;
+    -moz-border-radius: 4px 0 0 4px;
+    -webkit-border-radius: 4px 0 0 4px;
+    border-radius: 4px 0 0 4px; }
+  .bwizard-steps li:first-child:before {
+    border: none }
+  .bwizard-steps li:last-child {
+    margin-right: 0;
+    -moz-border-radius: 0 4px 4px 0;
+    -webkit-border-radius: 0 4px 4px 0;
+    border-radius: 0 4px 4px 0; }
+  .bwizard-steps li:last-child:after {
+    border: none }
+  .bwizard-steps li:before {
+    position: absolute;
+    left: 0; top: 0;
+    height: 0; width: 0;
+    border-bottom: 20px inset transparent;
+    border-left: 20px solid #fff;
+    border-top: 20px inset transparent;
+    content: "" }
+  .bwizard-steps li:after {
+    position: absolute;
+    right: -20px; top: 0;
+    height: 0; width: 0;
+    border-bottom: 20px inset transparent;
+    border-left: 20px solid #efefef;
+    border-top: 20px inset transparent;
+    content: "";
+    z-index: 2; }
+  .bwizard-steps a {
+    color: #333 }
+  .bwizard-steps a:hover {
+    text-decoration: none }
+.bwizard-steps.clickable li:not(.active) {
+  cursor: pointer }
+.bwizard-steps.clickable li:hover:not(.active) {
+  background: #ccc }
+.bwizard-steps.clickable li:hover:not(.active):after {
+  border-left-color: #ccc }
+.bwizard-steps.clickable li:hover:not(.active) a {
+  color: #08c }
+@media (max-width: 480px) { 
+  /* badges only on small screens */
+  .bwizard-steps li:after,
+  .bwizard-steps li:before {
+    border: none }
+  .bwizard-steps li,
+  .bwizard-steps li.active,
+  .bwizard-steps li:first-child,
+  .bwizard-steps li:last-child {
+    margin-right: 0;
+    padding: 0;
+    background-color: transparent }
+}
+
+
+/* for recline.js */
+/* slick grid fix */ .recline-slickgrid div { box-sizing: content-box; }
+/********************************************************************
+  * Form
+  *******************************************************************/
+
+.recline-query-editor .text-query input {
+  width: 400px;
+}
+
+.recline-query-editor button {
+  display: none;
+}
+
+/********************************************************************
+  * Data Views
+  *******************************************************************/
+
+.data-view .recline-slickgrid {
+  height: 500px;
+}
+
+/********************************************************************
+  * Data Search
+  *******************************************************************/
+
+.data-search ul {
+  margin-left: 0;
+  list-style-type: none;
+}
+
+.data-search .resource-list li {
+  border-left: solid #eee 3px;
+  padding-left: 5px;
+  margin-bottom: 2px;
+  background-color: #eee;
+  text-decoration: line-through;
+}
+
+.data-search .resource-list li.active {
+  border-left: solid orange 3px;
+  background-color: #eee;
+  text-decoration: none;
+}
+
+/********************************************************************
+  * Dataset Summary
+  *******************************************************************/
+
+.dataset.summary {
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+  border-bottom: dotted 1px #ccc;
+  font-size: 16px;
+  line-height: 20px;
+}
+
+.dataset.summary .logo {
+  width: 50px;
+  float: right;
+}
+
+.dataset.summary h3 {
+  margin: 0;
+  padding: 0;
+  font-size: 20px;
+  line-height: 1.5;
+}
+
+.dataset.summary h3 a {
+  color: #333;
+}
+
+.dataset.summary h3 a:hover {
+  text-decoration: none;
+}
+
+.dataset.summary .description {
+  margin-bottom: 5px;
+}
+
+.dataset.summary .place {
+  font-style: italic;
+}
+
+.dataset ul.keywords {
+  list-style-type: none;
+  margin: 0;
+}
+
+.dataset ul.keywords li {
+  display: inline;
+  padding: 1px 4px 2px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  font-size: 10.998px;
+  font-weight: bold;
+  line-height: 14px;
+  color: white;
+  vertical-align: baseline;
+  white-space: nowrap;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+  background: #55A1CE;
+  margin-right: 3px;
+}
+
+
+/********************************************************************
+  * Dataset Show
+  *******************************************************************/
+
+.dataset.show .logo {
+  width: 100px;
+  float: right;
+}
+
+.dataset.show .source {
+  font-style: italic;
+}
+
+.dataset.show .actions {
+  margin-bottom: 10px;
+}
+
+.dataset.show .viewer .recline-slickgrid {
+  margin-top: 20px;
+}
+
+.dataset.show .viewer .recline-slickgrid {
+  height: 500px;
+}
